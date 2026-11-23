@@ -1,3 +1,5 @@
 api_url.txt
 .clasp.json
 gas/.clasp.json
+gas/key.js
+key.js

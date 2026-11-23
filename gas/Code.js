@@ -1,6 +1,6 @@
 // 141회 공정표 동기화 — 기록은 내 드라이브의 JSON 파일 하나에 저장
 const FILE = '141회_공정표_동기화.json';
-function secret_() { return PropertiesService.getScriptProperties().getProperty('KEY'); }
+function secret_() { return KEY_; }
 function file_() {
   const it = DriveApp.getFilesByName(FILE);
   return it.hasNext() ? it.next() : DriveApp.createFile(FILE, '{"c":{},"i":{},"w":{},"n":{}}', 'application/json');

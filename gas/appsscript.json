@@ -1,4 +1,3 @@
 {"timeZone":"Asia/Seoul","exceptionLogging":"STACKDRIVER","runtimeVersion":"V8",
- "oauthScopes":["https://www.googleapis.com/auth/drive","https://www.googleapis.com/auth/script.scriptapp"],
- "webapp":{"executeAs":"USER_DEPLOYING","access":"ANYONE_ANONYMOUS"},
- "executionApi":{"access":"MYSELF"}}
+ "oauthScopes":["https://www.googleapis.com/auth/drive"],
+ "webapp":{"executeAs":"USER_DEPLOYING","access":"ANYONE_ANONYMOUS"}}
