@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2456c9">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="141 합격">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>141회 합격 공정표</title>
+<style>
+:root{--bg:#f4f3ef;--card:#fff;--ink:#1d1f24;--mute:#6b6f78;--line:#e3e1da;--acc:#2456c9;--acc2:#e8eefc;
+--r1:#4f7be0;--r2:#2fa37a;--r3:#e0892f;--r4:#c94a6a;--ok:#2fa37a;--mid:#e0a42f;--bad:#d9534f;--warn:#fff3d6}
+@media (prefers-color-scheme:dark){:root{--bg:#121418;--card:#1d2026;--ink:#e9eaee;--mute:#9a9fab;--line:#30343c;--acc:#7ea2ff;--acc2:#222c45;--warn:#3a3220}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+header{position:sticky;top:0;z-index:5;background:var(--bg);padding:calc(10px + env(safe-area-inset-top)) 16px 8px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line)}
+header h1{font-size:17px;margin:0;flex:1}
+.dday{font-weight:800;color:var(--acc);font-size:18px}
+.sync{font-size:11px;color:var(--mute)}
+main{max-width:720px;margin:0 auto;padding:12px 16px calc(84px + env(safe-area-inset-bottom))}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+nav.tabs button{flex:1;border:0;background:none;color:var(--mute);font:inherit;font-size:12px;padding:8px 0 10px;display:flex;flex-direction:column;align-items:center;gap:2px}
+nav.tabs button b{font-size:20px;line-height:1}
+nav.tabs button.on{color:var(--acc);font-weight:700}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin:0 0 12px}
+h2{font-size:15px;margin:0 0 10px}
+.sub{color:var(--mute);font-size:12.5px}
+.pill{font-size:11.5px;padding:2px 8px;border-radius:99px;color:#fff;font-weight:700;white-space:nowrap}
+.r1{background:var(--r1)}.r2{background:var(--r2)}.r3{background:var(--r3)}.r4{background:var(--r4)}.ex{background:#555}
+.dnav{display:flex;align-items:center;gap:8px}
+.dnav button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;width:44px;height:40px;font-size:18px}
+.dnav .mid{flex:1;text-align:center}
+.dnav .big{font-size:19px;font-weight:800;display:block}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:8px 12px;font:inherit;font-size:14px}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}
+.task{display:flex;gap:12px;padding:12px 2px;border-top:1px solid var(--line);align-items:flex-start}
+.task:first-child{border-top:0}
+.task input{width:24px;height:24px;flex:none;margin:1px 0 0;accent-color:var(--ok)}
+.task .t{font-size:12px;color:var(--mute);display:block}
+.task b{font-size:14.5px}
+.task .d{display:block;font-size:13.5px}
+.task.done b,.task.done .d{opacity:.45;text-decoration:line-through}
+.bar{height:10px;background:var(--line);border-radius:5px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ok);transition:width .3s}
+.it{display:flex;gap:8px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.it:first-child{border-top:0}
+.it .id{font-weight:800;color:var(--acc);width:36px;flex:none;font-size:13px}
+.it .tx{flex:1;font-size:13.5px;min-width:0;overflow-wrap:anywhere}
+.task>span{min-width:0;overflow-wrap:anywhere}
+html,body{overflow-x:hidden}
+.it .g{display:block;color:var(--mute);font-size:11.5px}
+.mk{display:flex;gap:4px;flex:none}
+.mk button{width:34px;height:34px;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--mute);font-size:15px;font-weight:800}
+.mk button.o.on{background:var(--ok);color:#fff;border-color:var(--ok)}
+.mk button.m.on{background:var(--mid);color:#fff;border-color:var(--mid)}
+.mk button.x.on{background:var(--bad);color:#fff;border-color:var(--bad)}
+.wc{font-size:11px;color:var(--mute);text-align:center;width:30px;flex:none}
+.wc button{display:block;width:30px;height:24px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:7px;font-weight:700;font-size:13px}
+.note{background:var(--warn);border-radius:10px;padding:10px 12px;font-size:13.5px;margin:10px 0 0}
+.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.kpi div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center}
+.kpi b{display:block;font-size:22px;font-variant-numeric:tabular-nums}
+.kpi span{font-size:11.5px;color:var(--mute)}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.seg button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:5px 12px;font:inherit;font-size:13px}
+.seg button.on{background:var(--ink);color:var(--card);border-color:var(--ink)}
+details{border-top:1px solid var(--line)}
+details:first-child{border-top:0}
+summary{cursor:pointer;padding:11px 0;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:8px}
+summary::-webkit-details-marker{display:none}
+.row{display:grid;grid-template-columns:64px 1fr 34px;gap:8px;padding:9px 0;border-top:1px dashed var(--line);font-size:13px}
+.row .dd{font-weight:700}
+.row .ids{color:var(--mute)}
+.row .pc{text-align:right;font-size:12px;color:var(--mute)}
+.row.today{background:var(--acc2);border-radius:8px}
+.row.fin .pc{color:var(--ok);font-weight:800}
+svg text{fill:var(--mute);font-size:10px}
+textarea{width:100%;min-height:60px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:14px;padding:8px}
+input[type=text]{width:100%;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;padding:8px}
+table{border-collapse:collapse;width:100%;font-size:13px}
+td,th{border-bottom:1px solid var(--line);padding:7px 4px;text-align:left;vertical-align:top}
+.hide{display:none}
+</style>
+</head>
+<body>
+<header><h1>141회 합격 공정표</h1><span class="sync" id="sync"></span><span class="dday" id="dday"></span></header>
+<main>
+  <section id="v-today"></section>
+  <section id="v-prog" class="hide"></section>
+  <section id="v-items" class="hide"></section>
+  <section id="v-all" class="hide"></section>
+  <section id="v-set" class="hide"></section>
+</main>
+<nav class="tabs">
+  <button data-v="today" class="on"><b>☀</b>오늘</button>
+  <button data-v="prog"><b>📈</b>공정</button>
+  <button data-v="items"><b>✎</b>문항</button>
+  <button data-v="all"><b>🗓</b>전체</button>
+  <button data-v="set"><b>⚙</b>설정</button>
+</nav>
+<script>
+const D=/*DATA*/null;
+const API=/*API*/'';
+const PCOL={R1:'r1',R2:'r2',R3:'r3',R4:'r4',EX:'ex'};
+const $=s=>document.querySelector(s);
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+// ── 상태: {c:{날짜_i:[1,ts]}, i:{Y01:[상태,ts]}, w:{Y01:[횟수,ts]}, n:{날짜:[메모,ts]}} — 기기끼리 최신 ts가 이김
+let S=LS.get('p141s',{c:{},i:{},w:{},n:{}});
+['c','i','w','n'].forEach(k=>S[k]=S[k]||{});
+const val=(cat,k)=>(S[cat][k]||[])[0];
+function put(cat,k,v){S[cat][k]=[v,Date.now()];LS.set('p141s',S);queuePush();}
+function merge(a,b){const o={};for(const cat of['c','i','w','n']){o[cat]={...(a&&a[cat])};for(const[k,v]of Object.entries((b&&b[cat])||{}))if(!o[cat][k]||o[cat][k][1]<v[1])o[cat][k]=v}return o}
+// ── 동기화 (구글 Apps Script)
+let KEY=LS.get('p141k','');
+{const m=location.hash.match(/k=([\w-]+)/);if(m){KEY=m[1];LS.set('p141k',KEY);history.replaceState(null,'',location.pathname)}}
+let pushT=null,busy=false;
+const syncMsg=t=>$('#sync').textContent=t;
+async function pull(){
+  if(!API||!KEY){syncMsg(KEY?'':'이 기기만 저장');return}
+  try{syncMsg('동기화…');const r=await fetch(API+'?k='+encodeURIComponent(KEY));const j=await r.json();if(j.err)throw j.err;
+    const m=merge(S,j.s);const changed=JSON.stringify(m)!==JSON.stringify(j.s);S=m;LS.set('p141s',S);if(document.activeElement?.tagName!=='TEXTAREA')render();
+    if(changed)await push();else syncMsg('✓ 동기화됨');}
+  catch(e){syncMsg('⚠ 오프라인(이 기기에 저장)')}
+}
+async function push(){
+  if(!API||!KEY)return;
+  if(busy){queuePush();return}
+  busy=true;
+  try{syncMsg('저장…');const r=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({k:KEY,s:S})});const j=await r.json();if(j.err)throw j.err;
+    S=merge(S,j.s);LS.set('p141s',S);syncMsg('✓ 동기화됨');}
+  catch(e){syncMsg('⚠ 오프라인(이 기기에 저장)')}
+  busy=false;
+}
+function queuePush(){clearTimeout(pushT);syncMsg('…');pushT=setTimeout(push,1200)}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')pull()});
+
+// ── 날짜
+const iso=d=>{const z=new Date(d.getTime()-d.getTimezoneOffset()*6e4);return z.toISOString().slice(0,10)};
+const today=iso(new Date());
+const first=D.days[0].d,last=D.days[D.days.length-1].d;
+const clamp=d=>d<first?first:d>last?last:d;
+let cur=clamp(today);
+const byD=Object.fromEntries(D.days.map(x=>[x.d,x]));
+const md=s=>+s.slice(5,7)+'/'+ +s.slice(8,10);
+const kname={wd:'평일',sat:'토요일',sun:'일요일',exam:'시험날'};
+const doneN=x=>x.tasks.filter((_,i)=>val('c',x.d+'_'+i)).length;
+const ALLT=D.days.reduce((a,x)=>a+x.tasks.length,0);
+$('#dday').textContent='D-'+Math.max(0,Math.round((new Date('2027-01-30')-new Date(today))/864e5));
+const mkLabel={o:'O',m:'△',x:'×'};
+
+function itemRow(id){
+  const p=D.pred[id],s=val('i',id)||'',w=val('w',id)||0;
+  return`<div class="it"><span class="id">${id}</span><span class="tx">${p[0]}<span class="g">${p[1]} · 영상 ${id[0]==='S'?'서술':'용어'} ${id.slice(1)}번</span></span>
+  <span class="wc"><button data-w="${id}">${w}</button>회</span>
+  <span class="mk">${['o','m','x'].map(k=>`<button class="${k}${s===k?' on':''}" data-i="${id}" data-s="${k}">${mkLabel[k]}</button>`).join('')}</span></div>`;
+}
+function bindItems(root){
+  root.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{const id=b.dataset.i,s=b.dataset.s;put('i',id,val('i',id)===s?'':s);render()});
+  root.querySelectorAll('[data-w]').forEach(b=>b.onclick=()=>{const id=b.dataset.w;put('w',id,((val('w',id)||0)+1)%6);render()});
+}
+
+// ── 오늘
+function vToday(){
+  const x=byD[cur],dn=doneN(x),tot=x.tasks.length,m=D.mock[x.d];
+  const ids=[...(x.S||[]),...(x.Y||[])];
+  let h=`<div class="card"><div class="dnav"><button id="pv">‹</button><span class="mid"><span class="big">${md(x.d)} (${x.w})</span>
+    <span class="pill ${PCOL[x.ph]}">${x.ph==='EX'?'시험':x.ph}</span> <span class="sub">${x.hol?x.hol+'(토요일처럼)':kname[x.k]} · D-${x.dday}</span></span><button id="nx">›</button></div>
+    ${cur!==clamp(today)?'<div style="text-align:center;margin-top:8px"><button class="btn" id="td">오늘로</button></div>':''}
+    ${m?`<div class="note"><b>${m[0]}</b> — ${m[1]}</div>`:''}${x.exam?`<div class="note"><b>${x.exam}교시 실전</b> — 시계 맞추고 100분, 답안지 양식에</div>`:''}
+    <div style="margin-top:10px">${x.tasks.map((t,i)=>{const on=val('c',x.d+'_'+i);return`<label class="task${on?' done':''}"><input type="checkbox" data-c="${x.d}_${i}"${on?' checked':''}><span><span class="t">${t[0]}</span><b>${t[1]}</b><span class="d">${t[2]}</span></span></label>`}).join('')}</div>
+    <div class="sub" style="margin:6px 0 4px">오늘 ${dn}/${tot} 완료</div><div class="bar"><i style="width:${tot?dn/tot*100:0}%"></i></div></div>`;
+  if(ids.length)h+=`<div class="card"><h2>오늘 쓸 문항 <span class="sub">— 써본 뒤 O/△/× · 숫자는 쓴 횟수(누르면 +1)</span></h2><div id="tItems">${ids.map(itemRow).join('')}</div></div>`;
+  h+=`<div class="card"><h2>한 줄 기록</h2><textarea id="memo" placeholder="오늘 막힌 것, 컨디션, 내일 할 것">${(val('n',x.d)||'').replace(/</g,'&lt;')}</textarea></div>`;
+  const v=$('#v-today');v.innerHTML=h;
+  v.querySelectorAll('[data-c]').forEach(c=>c.onchange=()=>{put('c',c.dataset.c,c.checked?1:0);render()});
+  const mv=k=>{const i=D.days.findIndex(y=>y.d===cur)+k;if(i>=0&&i<D.days.length){cur=D.days[i].d;render()}};
+  $('#pv').onclick=()=>mv(-1);$('#nx').onclick=()=>mv(1);if($('#td'))$('#td').onclick=()=>{cur=clamp(today);render()};
+  let mt;$('#memo').oninput=e=>{clearTimeout(mt);mt=setTimeout(()=>put('n',x.d,e.target.value),600)};
+  bindItems(v);
+}
+
+// ── 공정 (계획 누적 vs 실적 누적)
+function vProg(){
+  let pc=0,ac=0;const P=[],A=[];const ti=D.days.findIndex(x=>x.d===today);
+  D.days.forEach((x,i)=>{pc+=x.tasks.length;ac+=doneN(x);P.push(pc/ALLT*100);A.push(ac/ALLT*100)});
+  const upto=ti<0?(today<first?-1:D.days.length-1):ti;
+  const plan=upto>=0?P[upto]:0,act=A[A.length-1];
+  // 지연일: 실적 누적이 계획선의 어느 날에 해당하는지
+  let eq=-1;for(let i=0;i<P.length;i++)if(P[i]<=act+1e-9)eq=i;
+  const lag=upto-eq;
+  const statI=Object.keys(D.pred).map(id=>val('i',id)||'');
+  const cnt=k=>statI.filter(s=>s===k).length;
+  const writes=Object.keys(D.pred).reduce((a,id)=>a+(val('w',id)||0),0);
+  let streak=0;for(let i=upto;i>=0;i--){if(doneN(D.days[i])>0)streak++;else if(i!==upto)break;}
+  const W=340,H=170,px=i=>28+i/(D.days.length-1)*(W-36),py=v=>H-18-v/100*(H-30);
+  const path=(arr,n)=>arr.slice(0,n).map((v,i)=>(i?'L':'M')+px(i).toFixed(1)+' '+py(v).toFixed(1)).join('');
+  const bands=D.phases.map(([k,n,a,b])=>{const i0=D.days.findIndex(x=>x.d===a),i1=D.days.findIndex(x=>x.d===b);return`<rect x="${px(i0)}" y="${H-14}" width="${px(i1)-px(i0)+4}" height="6" class="${PCOL[k]}" style="fill:var(--${PCOL[k]})"/><text x="${(px(i0)+px(i1))/2}" y="${H-1}" text-anchor="middle">${k}</text>`}).join('');
+  const h=`<div class="kpi"><div><b>${act.toFixed(0)}%</b><span>실적 누적</span></div><div><b>${plan.toFixed(0)}%</b><span>오늘까지 계획</span></div>
+    <div><b style="color:${lag>0?'var(--bad)':'var(--ok)'}">${lag>0?lag+'일':'정상'}</b><span>${lag>0?'지연':'공정'}</span></div></div>
+  <div class="card"><h2>공정 S-커브 <span class="sub">파란 점선 계획 · 초록 실적</span></h2>
+  <svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="계획 대비 실적 누적">
+   ${[0,25,50,75,100].map(v=>`<line x1="28" x2="${W-8}" y1="${py(v)}" y2="${py(v)}" stroke="var(--line)"/><text x="2" y="${py(v)+3}">${v}%</text>`).join('')}
+   <path d="${path(P,P.length)}" fill="none" stroke="var(--acc)" stroke-width="2" stroke-dasharray="4 3"/>
+   <path d="${path(A,Math.max(1,upto+1))}" fill="none" stroke="var(--ok)" stroke-width="3"/>
+   ${upto>=0?`<line x1="${px(upto)}" x2="${px(upto)}" y1="8" y2="${H-18}" stroke="var(--bad)" stroke-dasharray="2 2"/><text x="${px(upto)+3}" y="14" style="fill:var(--bad)">오늘</text>`:''}
+   ${bands}</svg>
+  ${lag>0?`<div class="note">${lag}일 밀렸습니다. 이번 일요일 오전에 한 번만 메꾸고, 그래도 남으면 2순위(31~60번) 문항부터 버립니다.</div>`:''}</div>
+  <div class="card"><h2>단계별 진도</h2>${D.phases.map(([k,n,a,b])=>{const xs=D.days.filter(x=>x.d>=a&&x.d<=b);const t=xs.reduce((s,x)=>s+x.tasks.length,0),d=xs.reduce((s,x)=>s+doneN(x),0);
+    return`<div style="margin:8px 0"><div style="display:flex;justify-content:space-between;font-size:13px"><span><span class="pill ${PCOL[k]}">${k}</span> ${md(a)}~${md(b)} ${n}</span><b>${t?Math.round(d/t*100):0}%</b></div><div class="bar" style="margin-top:4px"><i style="width:${t?d/t*100:0}%;background:var(--${PCOL[k]})"></i></div></div>`}).join('')}</div>
+  <div class="card"><h2>예측 120선 숙달</h2>
+   <div class="kpi" style="margin:0"><div><b style="color:var(--ok)">${cnt('o')}</b><span>O 완벽</span></div><div><b style="color:var(--mid)">${cnt('m')}</b><span>△ 애매</span></div><div><b style="color:var(--bad)">${cnt('x')}</b><span>× 못씀</span></div></div>
+   <div class="bar" style="display:flex;margin-top:10px"><i style="width:${cnt('o')/1.2}%"></i><i style="width:${cnt('m')/1.2}%;background:var(--mid)"></i><i style="width:${cnt('x')/1.2}%;background:var(--bad)"></i></div>
+   <div class="sub" style="margin-top:6px">미작성 ${cnt('')} · 누적 쓰기 ${writes}회 · 연속 공부 ${streak}일</div></div>`;
+  $('#v-prog').innerHTML=h;
+}
+
+// ── 문항
+let filt='all',kindF='all';
+function vItems(){
+  const ids=Object.keys(D.pred).filter(id=>(kindF==='all'||id[0]===kindF)&&(filt==='all'||(val('i',id)||'')===(filt==='none'?'':filt)));
+  $('#v-items').innerHTML=`<div class="card"><div class="seg">${[['all','전체'],['S','서술'],['Y','용어']].map(([k,n])=>`<button data-k="${k}" class="${kindF===k?'on':''}">${n}</button>`).join('')}</div>
+   <div class="seg">${[['all','모두'],['x','× 못씀'],['m','△ 애매'],['none','미작성'],['o','O 완벽']].map(([k,n])=>`<button data-f="${k}" class="${filt===k?'on':''}">${n}</button>`).join('')}</div>
+   <div class="sub">${ids.length}문항 · 1~30번이 1순위</div><div id="iList" style="margin-top:6px">${ids.map(itemRow).join('')||'<div class="sub" style="padding:20px 0">해당 문항 없음</div>'}</div></div>`;
+  document.querySelectorAll('#v-items [data-k]').forEach(b=>b.onclick=()=>{kindF=b.dataset.k;render()});
+  document.querySelectorAll('#v-items [data-f]').forEach(b=>b.onclick=()=>{filt=b.dataset.f;render()});
+  bindItems($('#v-items'));
+}
+
+// ── 전체
+function vAll(){
+  const wk={};D.days.forEach(x=>{const d=new Date(x.d+'T00:00');const mon=new Date(d.getTime()-((d.getDay()+6)%7)*864e5);(wk[iso(mon)]=wk[iso(mon)]||[]).push(x)});
+  const open=Object.keys(wk).find(k=>wk[k].some(x=>x.d===today));
+  $('#v-all').innerHTML=`<div class="card">${Object.entries(wk).map(([k,xs])=>{
+    const dn=xs.reduce((a,x)=>a+doneN(x),0),tot=xs.reduce((a,x)=>a+x.tasks.length,0);
+    return`<details${k===open?' open':''}><summary><span>${md(xs[0].d)}~${md(xs[xs.length-1].d)} <span class="pill ${PCOL[xs[0].ph]}">${[...new Set(xs.map(x=>x.ph))].join('·')}</span></span><span class="sub">${Math.round(dn/tot*100)}%</span></summary>`+
+    xs.map(x=>{const ids=[...(x.S||[]),...(x.Y||[])],m=D.mock[x.d],d=doneN(x);
+      const desc=x.k==='exam'?'<b>시험</b>':m?`<b>${m[0]}</b> ${m[1]}`:x.exam?`${x.exam}교시 실전 · ${ids.join(' ')}`:ids.length?ids.join(' '):x.tasks.map(t=>t[1]).join(' · ');
+      return`<div class="row${x.d===today?' today':''}${d===x.tasks.length?' fin':''}" data-d="${x.d}"><span class="dd">${md(x.d)} ${x.w}</span><span class="ids">${desc}</span><span class="pc">${d===x.tasks.length?'✓':d+'/'+x.tasks.length}</span></div>`}).join('')+'</details>'}).join('')}</div>
+   <div class="card"><h2>모의고사</h2><table>${Object.entries(D.mock).map(([d,[a,b]])=>`<tr><td>${md(d)} (${byD[d].w})</td><td>${a}</td><td>${b}</td></tr>`).join('')}</table></div>`;
+  document.querySelectorAll('#v-all .row').forEach(r=>r.onclick=()=>{cur=r.dataset.d;show('today')});
+}
+
+// ── 설정
+function vSet(){
+  $('#v-set').innerHTML=`<div class="card"><h2>폰·PC 같이 쓰기</h2>
+   <div class="sub">${API?'같은 동기화 코드를 넣은 기기끼리 체크·O/△/×·기록이 자동으로 맞춰집니다.':'동기화 서버가 아직 연결되지 않아 이 기기에만 저장됩니다.'}</div>
+   <div style="display:flex;gap:6px;margin-top:8px"><input type="text" id="key" value="${KEY}" placeholder="동기화 코드"><button class="btn pri" id="ksave">저장</button></div>
+   <div class="sub" style="margin-top:6px">상태: ${$('#sync').textContent||'-'}</div></div>
+  <div class="card"><h2>백업</h2><div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn" id="exp">기록 내려받기</button><label class="btn">기록 불러오기<input type="file" id="imp" accept=".json" class="hide"></label></div></div>
+  <div class="card"><h2>평일 시간 쓰는 법</h2><table>
+   <tr><td>06–08 버스</td><td>기출 465(90 전자책) — 문제 보고 대제목 떠올리기, 못 하면 ×</td></tr>
+   <tr><td>점심</td><td>용어 쇼츠·×표 A6 카드</td></tr>
+   <tr><td>18–20 버스</td><td>95 영상으로 오늘 밤 문항 미리보기</td></tr>
+   <tr><td>21–24 도서관</td><td>시간 재며 쓰기 → 97 전자책 채점 → ×는 앞글자 카드</td></tr>
+   <tr><td>00–06</td><td>수면 6시간은 지킨다</td></tr></table>
+   <div class="note">버스는 보기, 도서관은 쓰기만. 일요일 오후는 쉰다. 1/25부터 새 자료 금지.</div></div>`;
+  $('#ksave').onclick=()=>{KEY=$('#key').value.trim();LS.set('p141k',KEY);pull()};
+  $('#exp').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(S)],{type:'application/json'}));a.download='141회_공정기록_'+today+'.json';a.click()};
+  $('#imp').onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{S=merge(S,JSON.parse(t));LS.set('p141s',S);render();push()})};
+}
+
+let view='today';
+function show(v){view=v;document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
+  document.querySelectorAll('main>section').forEach(s=>s.classList.toggle('hide',s.id!=='v-'+v));render();window.scrollTo(0,0)}
+function render(){({today:vToday,prog:vProg,items:vItems,all:vAll,set:vSet})[view]()}
+document.querySelectorAll('nav.tabs button').forEach(b=>b.onclick=()=>show(b.dataset.v));
+render();pull();
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>
+</body>
+</html>
